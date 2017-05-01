@@ -8,6 +8,7 @@ do
     case $var in
         "-r")
             echo "Clearing previous screen session"
+	    screen -X -S images quit
             screen -X -S acm quit
             screen -X -S ipm quit
             screen -X -S cm quit
@@ -27,8 +28,8 @@ do
         "-p")
             echo "Clearing old Images"
             cd ~/traffic-violation-detector-cm
-            rm -R images/
-            mkdir images
+            rm images/*
+            #mkdir images
     esac
 done
 
