@@ -45,12 +45,13 @@ screen -dmSL ccm npm start
 echo "Initializing Camera Module..."
 cd ~/traffic-violation-detector-cm
 screen -dmSL cm python app.py 
+cd images
+screen -dmSL images python -m SimpleHTTPServer
 
 echo "Initializing Arduino Communication Module..."
 cd ~/traffic-violation-detector-acm
 sudo chmod 666 /dev/ttyACM0
 screen -dmSL acm python main.py
-cd images
-screen -dmSL images python -m SimpleHTTPServer
+
 
 echo "Traffic violation detection system started"
