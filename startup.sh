@@ -13,6 +13,7 @@ do
             screen -X -S ipm quit
             screen -X -S cm quit
             screen -X -S ccm quit
+	    screen -X -S fi quit
             ;;
         "-c")
             echo "Clearing old logs"
@@ -24,6 +25,8 @@ do
             rm screenlog.*
             cd ~/traffic-violation-detector-cm
             rm screenlog.*
+	    cd ~/traffic-violation-detection-fi
+	    rm screenlog.*
             ;;
         "-p")
             echo "Clearing old Images"
@@ -53,5 +56,8 @@ cd ~/traffic-violation-detector-acm
 sudo chmod 666 /dev/ttyACM0
 screen -dmSL acm python main.py
 
+echo "Initializing Failed Images Module..."
+cd ~/traffic-violation-detection-fi
+screen -dmSL fi nodejs index.js
 
 echo "Traffic violation detection system started"
